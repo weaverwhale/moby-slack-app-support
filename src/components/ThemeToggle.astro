@@ -47,7 +47,7 @@
 <script>
   const theme =
     localStorage.getItem('theme') ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches
+    (window.matchMedia('(prefers-color-scheme: dark)').matches || true
       ? 'dark'
       : 'light');
   document.documentElement.classList.add(theme);
@@ -62,4 +62,3 @@
     localStorage.setItem('theme', newTheme);
   });
 </script>
-
