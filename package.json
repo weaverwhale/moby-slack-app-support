@@ -2,6 +2,10 @@
   "name": "moby-slack-app-support",
   "type": "module",
   "version": "0.0.1",
+  "npmClient": "yarn",
+  "engines": {
+    "yarn": "^1.22.22"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
