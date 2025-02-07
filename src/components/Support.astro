@@ -1,4 +1,9 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
+
 <div class="container">
+  <ThemeToggle />
   <h1>
     <img src="/favicon.png" />
     &nbsp;Moby Slack Application
@@ -70,8 +75,10 @@
     In the Triple Whale application, navigate to{' '}
     <a href="https://app.triplewhale.com/api-keys" target="_blank"
       >Settings > API Keys</a
-    >, and click "Generate" to create a new API key. Make sure to check ALL the
-    boxes.
+    >, and click "Generate" to create a new API key.
+    <p>
+      <strong>Note:</strong> Make sure to check <i>ALL</i> the boxes.
+    </p>
   </p>
 
   <h2 id="setting-up">

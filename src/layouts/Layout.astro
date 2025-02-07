@@ -16,13 +16,34 @@
 </html>
 
 <style is:global>
+  :root {
+    /* Light theme variables */
+    --bg-gradient-light: linear-gradient(135deg, #f0f4f8 0%, #e2eaf2 100%);
+    --text-color-light: #1a1a1a;
+    --heading-gradient-light: linear-gradient(90deg, #032045, #053366);
+    --link-color-light: #0066cc;
+    --box-bg-light: rgba(0, 0, 0, 0.05);
+
+    /* Dark theme variables (existing) */
+    --bg-gradient-dark: linear-gradient(135deg, #032045 0%, #053366 100%);
+    --text-color-dark: #f0f4f8;
+    --heading-gradient-dark: linear-gradient(90deg, #e2f1ff, #b3d5ff);
+    --link-color-dark: #4a9eff;
+    --box-bg-dark: rgba(255, 255, 255, 0.05);
+  }
+
   body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #032045 0%, #053366 100%);
-    color: #f0f4f8;
+    background: var(--bg-gradient-light);
+    color: var(--text-color-light);
     line-height: 1.6;
     padding: 0;
     margin: 0;
+  }
+
+  .dark body {
+    background: var(--bg-gradient-dark);
+    color: var(--text-color-dark);
   }
 
   .container {
@@ -40,7 +61,15 @@
   h1 {
     font-size: 2.5rem;
     margin-bottom: 0;
-    background: linear-gradient(90deg, #e2f1ff, #b3d5ff);
+    color: var(--text-color-light);
+    background: var(--heading-gradient-light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dark h1 {
+    color: var(--text-color-dark);
+    background: var(--heading-gradient-dark);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -49,6 +78,10 @@
     font-size: 1.8rem;
     margin-top: 3rem;
     margin-bottom: 0;
+    color: #032045;
+  }
+
+  .dark h2 {
     color: #e2f1ff;
   }
 
@@ -56,6 +89,10 @@
     font-size: 1.4rem;
     margin-top: 2rem;
     margin-bottom: 0;
+    color: #053366;
+  }
+
+  .dark h3 {
     color: #c6ddfa;
   }
 
@@ -65,14 +102,22 @@
   }
 
   a:not(.header-link) {
-    color: #4a9eff;
+    color: var(--link-color-light);
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
+  .dark a:not(.header-link) {
+    color: var(--link-color-dark);
+  }
+
   a:not(.header-link):hover {
-    color: #66b2ff;
+    color: #0052a3;
     text-decoration: underline;
+  }
+
+  .dark a:not(.header-link):hover {
+    color: #66b2ff;
   }
 
   footer,
@@ -83,9 +128,12 @@
 
   footer {
     justify-content: space-between;
-
     margin-top: 4rem;
     padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .dark footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
@@ -93,15 +141,20 @@
     justify-content: flex-start;
     gap: 1rem;
     margin: 0;
-
     font-size: 0.9rem;
   }
 
   .box {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--box-bg-light);
     border-radius: 8px;
     padding: 1.5rem;
     margin: 1.5rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .box {
+    background: var(--box-bg-dark);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
@@ -113,6 +166,10 @@
     border-radius: 12px;
     overflow: hidden;
     margin: 1.5rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .videoWrapper {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
 

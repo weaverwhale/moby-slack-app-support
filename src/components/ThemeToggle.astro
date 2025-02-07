@@ -1,0 +1,65 @@
+<button id="theme-toggle" aria-label="Toggle theme">
+  <span class="sun">☀️</span>
+  <span class="moon">🌙</span>
+</button>
+
+<style>
+  #theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  #theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .sun,
+  .moon {
+    position: absolute;
+    transition: opacity 0.3s ease;
+  }
+
+  :global(.dark) .sun {
+    opacity: 0;
+  }
+
+  :global(.light) .moon {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  const theme =
+    localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light');
+  document.documentElement.classList.add(theme);
+
+  const toggle = document.getElementById('theme-toggle');
+  toggle?.addEventListener('click', () => {
+    const newTheme = document.documentElement.classList.contains('dark')
+      ? 'light'
+      : 'dark';
+    document.documentElement.classList.remove('dark', 'light');
+    document.documentElement.classList.add(newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+</script>
+
