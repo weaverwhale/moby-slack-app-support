@@ -1,0 +1,74 @@
+<nav class="box table-of-contents">
+  <h2>Table of Contents</h2>
+  <div id="toc-content"></div>
+</nav>
+
+<script>
+  function generateTableOfContents() {
+    const container = document.getElementById('toc-content');
+    const headings = document.querySelectorAll('h2[id]');
+
+    const list = document.createElement('ul');
+
+    headings.forEach((heading) => {
+      const id = heading.id;
+      // Get the text and emoji if present
+      const text = heading.textContent?.trim() ?? '';
+      // Find emoji in the text (if any)
+      const emojiMatch = text.match(
+        /([\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}])/u
+      );
+      const emoji = emojiMatch ? emojiMatch[0] : '';
+      // Clean up the text (remove the emoji if present)
+      const cleanText = text
+        .replace(/([\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}])/u, '')
+        .trim();
+
+      const listItem = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = `#${id}`;
+      link.innerHTML = emoji ? `${emoji} ${cleanText}` : cleanText;
+
+      listItem.appendChild(link);
+      list.appendChild(listItem);
+    });
+
+    container?.appendChild(list);
+  }
+
+  // Run after the DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', generateTableOfContents);
+</script>
+
+<style>
+  .table-of-contents {
+    background: var(--background-secondary);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    width: auto;
+  }
+
+  .table-of-contents h2 {
+    margin-top: 0;
+  }
+
+  .table-of-contents ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .table-of-contents li {
+    margin: 0.5rem 0;
+  }
+
+  .table-of-contents a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .table-of-contents a:hover {
+    text-decoration: underline;
+  }
+</style>
