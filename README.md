@@ -1,5 +1,9 @@
 # Moby Slack App Support
 
+This is an app that allows users to use Moby within Slack.
+
+https://moby-slack-support.netlify.app
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0c288aeb-a9a7-40ef-a529-5258fa6dc5f0/deploy-status)](https://app.netlify.com/sites/moby-slack-support/deploys)
 
 ## 🏁 Quick Start
